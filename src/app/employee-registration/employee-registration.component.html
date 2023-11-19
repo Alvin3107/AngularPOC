@@ -1,0 +1,40 @@
+<div class="registration-container">
+    <div class="registration-form">
+        <div class="registration-header">
+            <h2>EMPLOYEE REGISTRATION</h2>
+        </div>
+        <app-input class="form-input" type="text" [control]="employeeForm.controls['firstName']" inputId="firstName"
+            label="First Name"></app-input>
+        <app-input class="form-input" type='text' [control]="employeeForm.controls['lastName']" inputId="lastName"
+            label="Last Name"></app-input>
+        <app-input class="form-input" type='text' [control]="employeeForm.controls['mobile']" inputId="mobile"
+            label="Mobile"></app-input>
+        <app-input class="form-input" type='text' [control]="employeeForm.controls['mail']" inputId="mail"
+            label="Mail"></app-input>
+        <app-input class="form-input" type='number' [control]="employeeForm.controls['age']" inputId="age"
+            label="Age"></app-input>
+        <app-input class="form-input" [radioOptions]="gender" type='radio' [control]="employeeForm.controls['gender']"
+            inputId="gender" label="Gender"></app-input>
+        <app-input class="form-input" [radioOptions]="martialStatusList" type='radio'
+            [control]="employeeForm.controls['martialStatus']" inputId="martialStatus"
+            label="Martial Status"></app-input>
+        <app-input class="form-input" [selectOptions]="countries" type='select'
+            [control]="employeeForm.controls['country']" inputId="country" label="Country"></app-input>
+        <app-input class="form-input" [multiSelectOptions]="techList" type='multi-select'
+            [control]="employeeForm.controls['knownTechs']" inputId="knownTechs" label="Known Techs"></app-input>
+        <app-input class="form-input" [checkboxOptions]="preferredWorkHours" type='checkbox'
+            [control]="employeeForm.controls['preferredWorkHours']" inputId="preferredWorkHours"
+            (checkedValuesOutput)="preferredWorkingHours($event)" label="Preferred Work Hours"></app-input>
+        <app-input class="form-input" type="textarea" [control]="employeeForm.controls['hobbies']" inputId="hobbies"
+            label="Hobbies"></app-input>
+        <app-input class="form-input" type="file-upload" [control]="employeeForm.controls['cv']" inputId="cv"
+            label="Upload CV"></app-input>
+        <app-input class="form-input" type="range" [control]="employeeForm.controls['rateCommunication']"
+            inputId="rateCommunication" label="Rate Your Communication"></app-input>
+        <app-input class="form-input" type="color" [control]="employeeForm.controls['preferredColor']"
+            inputId="preferredColor" label="Select your preferred color"></app-input>
+        <div class="registration-submit">
+            <button class="submit-button" (click)="employeeRegister()">Submit</button>
+        </div>
+    </div>
+</div>

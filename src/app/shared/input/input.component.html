@@ -1,0 +1,131 @@
+<div *ngIf="type === 'text'">
+    <label class="label" [for]="inputId">{{label}}</label>
+    <div class="input-container">
+        <input class="input" [placeholder]="label" [formControl]="control" type="text" [id]="inputId">
+        <ng-container *ngIf="control.invalid && control.touched">
+            <div class="error" *ngFor="let error of control.errors | keyvalue">
+                {{errorMessages[error.key]}}
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf="type === 'number'">
+    <label class="label" [for]="inputId">{{label}}</label>
+    <div class="input-container">
+        <input class="input" [placeholder]="label" [formControl]="control" type="number" [id]="inputId">
+        <ng-container *ngIf="control.invalid && control.touched">
+            <div class="error" *ngFor="let error of control.errors | keyvalue">
+                {{errorMessages[error.key]}}
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf="type === 'radio'">
+    <label class="label" [for]="inputId">{{ label }}</label>
+    <div class="radio " *ngFor="let option of radioOptions">
+        <input type="radio" [formControl]="control" [id]="inputId + option.value" [value]="option.value"
+            [name]="inputId">
+        <label [for]="inputId + option.value">{{ option.label }}</label>
+    </div>
+    <ng-container *ngIf="control.invalid && control.touched">
+        <div class="error" *ngFor="let error of control.errors | keyvalue">
+            {{ errorMessages[error.key] }}
+        </div>
+    </ng-container>
+</div>
+
+<div *ngIf="type === 'select'">
+    <label class="label" [for]="inputId">{{ label }}</label>
+    <div class="input-container">
+        <select class="input select" [formControl]="control" [id]="inputId">
+            <option value="" disabled selected>{{ label }}</option>
+            <option *ngFor="let option of selectOptions" [value]="option.value">{{ option.label }}</option>
+        </select>
+        <ng-container *ngIf="control.invalid && control.touched">
+            <div class="error" *ngFor="let error of control.errors | keyvalue">
+                {{ errorMessages[error.key] }}
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+
+<div *ngIf="type === 'multi-select'">
+    <label class="label" [for]="inputId">{{ label }}</label>
+    <div class="input-container">
+        <mat-form-field class="input">
+            <mat-select [formControl]="control" [id]="inputId" multiple [placeholder]="label">
+                <mat-option *ngFor="let option of multiSelectOptions"
+                    [value]="option.value">{{option.label}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <ng-container *ngIf="control.invalid && control.touched">
+            <div class="error" *ngFor="let error of control.errors | keyvalue">
+                {{ errorMessages[error.key] }}
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf="type === 'checkbox'">
+    <label class="label" [for]="inputId">{{ label }}</label>
+    <div class="input-container" *ngFor="let option of checkboxOptions">
+        <input type="checkbox" [formControl]="control" [id]="inputId + option.value"
+            (change)="checked($event,option.value)" [value]="option.value">
+        <label [for]="inputId + option.value">{{ option.label }}</label>
+    </div>
+    <ng-container *ngIf="control.invalid && control.touched">
+        <div class="error" *ngFor="let error of control.errors | keyvalue">
+            {{ errorMessages[error.key] }}
+        </div>
+    </ng-container>
+</div>
+
+<div *ngIf="type === 'textarea'">
+    <label class="label" [for]="inputId">{{ label }}</label>
+    <div class="input-container">
+        <textarea class="input" [formControl]="control" [id]="inputId"></textarea>
+        <ng-container *ngIf="control.invalid && control.touched">
+            <div class="error" *ngFor="let error of control.errors | keyvalue">
+                {{ errorMessages[error.key] }}
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf="type === 'file-upload'">
+    <label class="label" [for]="inputId">{{ label }}</label>
+    <div class="input-container">
+        <input class="input" type="file" [formControl]="control" [id]="inputId" (change)="onFileSelected($event)">
+        <ng-container *ngIf="control.invalid && control.touched">
+            <div class="error" *ngFor="let error of control.errors | keyvalue">
+                {{ errorMessages[error.key] }}
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf="type === 'range'">
+    <label class="label" [for]="inputId">{{ label }}</label>
+    <div class="input-container">
+        <input class="input" type="range" [formControl]="control" [id]="inputId">
+        <ng-container *ngIf="control.invalid && control.touched">
+            <div class="error" *ngFor="let error of control.errors | keyvalue">
+                {{ errorMessages[error.key] }}
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div class="color-input" *ngIf="type === 'color'">
+    <label class="label" [for]="inputId">{{ label }}</label>
+    <input class="input-container" type="color" [formControl]="control" [id]="inputId">
+    <ng-container *ngIf="control.invalid && control.touched">
+        <div class="error" *ngFor="let error of control.errors | keyvalue">
+            {{ errorMessages[error.key] }}
+        </div>
+    </ng-container>
+</div>
